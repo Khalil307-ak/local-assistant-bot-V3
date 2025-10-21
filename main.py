@@ -1,17 +1,23 @@
 import shlex
 import os
 from rich.console import Console
+from rich.panel import Panel
 from rich import print as rprint
 from commands import (
     cmd_help, cmd_time, cmd_open, cmd_note, cmd_calc, cmd_sysinfo, cmd_clear,
     cmd_calc_history, cmd_convert, cmd_random, cmd_clean, cmd_battery, 
-    cmd_network, cmd_fun, cmd_remind
+    cmd_network, cmd_fun, cmd_remind, cmd_file_manager, cmd_password_gen,
+    cmd_weather, cmd_encrypt, cmd_decrypt, cmd_backup, cmd_restore,
+    cmd_process_manager, cmd_disk_analyzer, cmd_system_monitor, cmd_task_manager,
+    cmd_url_shortener, cmd_qr_generator, cmd_hash_generator, cmd_base64_encode,
+    cmd_base64_decode, cmd_json_formatter, cmd_text_tools, cmd_settings
 )
 
 console = Console()
 
 # --- COMMAND MAP ---
 COMMAND_MAP = {
+    # Basic Commands
     "help": lambda args: cmd_help(),
     "time": lambda args: cmd_time(args),
     "open": lambda args: cmd_open(args),
@@ -24,6 +30,42 @@ COMMAND_MAP = {
     "convert": lambda args: cmd_convert(args),
     "random": lambda args: cmd_random(args),
     "remind": lambda args: cmd_remind(args),
+    
+    # File Management
+    "file": lambda args: cmd_file_manager(args),
+    "files": lambda args: cmd_file_manager(args),
+    
+    # Security & Encryption
+    "password": lambda args: cmd_password_gen(args),
+    "encrypt": lambda args: cmd_encrypt(args),
+    "decrypt": lambda args: cmd_decrypt(args),
+    "hash": lambda args: cmd_hash_generator(args),
+    
+    # Data Processing
+    "base64": lambda args: cmd_base64_encode(args),
+    "decode64": lambda args: cmd_base64_decode(args),
+    "json": lambda args: cmd_json_formatter(args),
+    "text": lambda args: cmd_text_tools(args),
+    
+    # System Management
+    "process": lambda args: cmd_process_manager(args),
+    "disk": lambda args: cmd_disk_analyzer(args),
+    "monitor": lambda args: cmd_system_monitor(args),
+    "tasks": lambda args: cmd_task_manager(args),
+    
+    # Web Tools
+    "weather": lambda args: cmd_weather(args),
+    "url": lambda args: cmd_url_shortener(args),
+    "qr": lambda args: cmd_qr_generator(args),
+    
+    # Backup & Restore
+    "backup": lambda args: cmd_backup(args),
+    "restore": lambda args: cmd_restore(args),
+    
+    # Settings
+    "settings": lambda args: cmd_settings(args),
+    "config": lambda args: cmd_settings(args),
+    
     # Aliases
     "calc history": lambda args: cmd_calc_history(args),
     "clear": lambda args: cmd_clear(),
@@ -63,10 +105,11 @@ def display_banner():
         "[bold cyan] | |  | || | | |  | | | | ||  <   [/bold cyan]",
         "[bold cyan] | |__| || | | |__| | |_| || . \\  [/bold cyan]",
         "[bold cyan] |_____/ |_|  \\____/ \\___/ |_|\\_\\ [/bold cyan]",
-        "[bold yellow] Local Assistant Bot - v2.0 - Built for Khalil [/bold yellow]"
+        "[bold yellow] Advanced Local Assistant Bot - v3.0 - Professional Edition [/bold yellow]"
     ]
     rprint(Panel("\n".join(banner), border_style="bold green"))
     rprint("[bold white]Ready. Type [yellow]'help'[/yellow] for commands or [yellow]'exit'[/yellow] to quit.[/bold white]")
+    rprint("[bold cyan]Pro Tip: Use 'help' to see all available commands![/bold cyan]")
 
 
 def main():

@@ -172,6 +172,55 @@ def edit_note_by_index(index: int, new_text: str):
 
 # --- ADVANCED SYSTEM UTILITIES ---
 
+def get_sysinfo():
+    """Returns system information including CPU, memory, and disk usage."""
+    try:
+        # Get basic system info
+        platform_name = platform.system()
+        machine = platform.machine()
+        processor = platform.processor()
+        
+        # Get CPU usage
+        cpu_percent = psutil.cpu_percent(interval=1)
+        
+        # Get memory info
+        memory = psutil.virtual_memory()
+        memory_used_mb = round(memory.used / (1024 * 1024), 1)
+        memory_total_mb = round(memory.total / (1024 * 1024), 1)
+        memory_percent = memory.percent
+        
+        # Get disk info
+        disk = psutil.disk_usage('/')
+        disk_used_gb = round(disk.used / (1024 * 1024 * 1024), 1)
+        disk_total_gb = round(disk.total / (1024 * 1024 * 1024), 1)
+        disk_percent = round((disk.used / disk.total) * 100, 1)
+        
+        return {
+            'platform': platform_name,
+            'machine': machine,
+            'processor': processor,
+            'cpu_usage_percent': cpu_percent,
+            'memory_used_mb': memory_used_mb,
+            'memory_total_mb': memory_total_mb,
+            'memory_percent': memory_percent,
+            'disk_used_gb': disk_used_gb,
+            'disk_total_gb': disk_total_gb,
+            'disk_percent': disk_percent
+        }
+    except Exception as e:
+        return {
+            'platform': 'Unknown',
+            'machine': 'Unknown',
+            'processor': 'Unknown',
+            'cpu_usage_percent': 'N/A',
+            'memory_used_mb': 'N/A',
+            'memory_total_mb': 'N/A',
+            'memory_percent': 'N/A',
+            'disk_used_gb': 'N/A',
+            'disk_total_gb': 'N/A',
+            'disk_percent': 'N/A'
+        }
+
 def clean_system():
     """Tries to clean temp files and caches (basic, cross-platform friendly)."""
     if platform.system() == "Windows":
@@ -314,11 +363,18 @@ def get_fun_quote():
         return "Couldn't fetch an external quote. Enjoy coding!"
 
 def get_fun_joke():
-    """Provides a Moroccan-style short joke (Hardcoded for locality)."""
+    """Provides programming-related jokes (Updated for English version)."""
     jokes = [
-        "واحد سولو صاحبو: واش كتعرف شي طريقة باش نحيد الكرش؟ قال ليه: اه، سير للطواليط!",
-        "قاليك هذا واحد مشى لمرجان شرى كيلو ديال الضو.",
-        "الاستاذ سول التلميذ: شنو هي الحاجة اللي كتشوفها وما كتشوفهاش؟ التلميذ: هي التلفازة وهي مطفية!"
+        "Why do programmers prefer dark mode? Because light attracts bugs!",
+        "How many programmers does it take to change a light bulb? None, that's a hardware problem.",
+        "Why do Java developers wear glasses? Because they can't C#!",
+        "A SQL query goes into a bar, walks up to two tables and asks: 'Can I join you?'",
+        "Why did the programmer quit his job? He didn't get arrays!",
+        "What do you call a programmer from Finland? Nerdic.",
+        "Why do Python programmers prefer snakes? Because they're always trying to catch exceptions!",
+        "How do you comfort a JavaScript bug? You console it!",
+        "Why don't programmers like nature? It has too many bugs.",
+        "What's a programmer's favorite hangout place? The Foo Bar!"
     ]
     return random.choice(jokes)
 
