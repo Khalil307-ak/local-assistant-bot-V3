@@ -1,68 +1,195 @@
-# 🤖 Local Assistant Bot
+ocal Assistant Bot (v2.0) - The Advanced Local Assistant
 
-A versatile command-line assistant written in **Python**. It provides essential system utilities and a simple, complete note-taking mechanism, all accessible directly from your terminal.
+A comprehensive and advanced assistant operated via the Terminal, written in Python. It has been developed as an integrated tool for task management, calculations, system monitoring, and adding a touch of fun to your daily experience.
 
----
+🌟 Key Features in Version 2.0
 
-### 🌟 Features
+Comprehensive Note Management: Add, show, search by keyword, edit, and delete individually or in bulk.
 
-* **Complete Note Management:** Add, view, and **delete** notes easily using simple commands.
-* **System Utilities:** Get current time (`time`), view system usage/specs (`sysinfo`), and clear the screen (`clear`).
-* **File Interaction:** Open files or directories on your system (`open <path>`).
-* **Safe Calculator:** Evaluate arithmetic expressions directly (`calc <expression>`).
-* **Cross-Platform:** Works on Windows, macOS, and Linux.
+Advanced System Tools: Battery check (for laptops), local network info (IP and Wi-Fi), and quick system cleanup tasks.
 
----
+Extended Calculation Functions: Safe calculator, saving calculation history, and unit conversions (length, weight, temperature).
 
-## 🛠️ Requirements & Setup
+Enhanced Interactivity: Colored user interface using the rich library, along with an initial welcome ASCII Banner.
 
-| Requirement | Details |
-| :--- | :--- |
-| **Python** | Version 3.8+ |
-| **Dependencies** | [cite_start]`psutil` (for system information) [cite: 1] |
+Entertainment & Reminders: Random generator (passwords, numbers), quotes/jokes, and the ability to send desktop notifications as reminders.
 
-### Installation
+🛠️ Requirements and Setup
 
-1.  **Get the Files**
-    ```bash
-    git clone [https://github.com/YourUsername/local-assistant-bot.git](https://github.com/YourUsername/local-assistant-bot.git)
-    cd local-assistant-bot
-    ```
+Requirement
 
-2.  **Optional: Create a Virtual Environment**
-    ```bash
-    python -m venv venv
-    .\venv\Scripts\activate  # On Windows
-    source venv/bin/activate # On macOS/Linux
-    ```
+Details
 
-3.  **Install Dependencies**
-    ```bash
-    pip install -r requirements.txt
-    ```
+Python
 
----
+Version 3.8 and above.
 
-## 🚀 Usage
+Libraries
+
+psutil, rich, requests, plyer (Required for new functions).
+
+Project Structure
+
+local-assistant-bot/
+│
+├── main.py          # Bot entry point, command processing, and interface display.
+├── commands.py      # Implementation of all terminal commands (with color formatting).
+├── utils.py         # Helper functions (system, calculation, notes, conversion).
+├── requirements.txt # List of required dependencies.
+└── data/
+    ├── notes.txt    # Note storage file.
+    └── calc_history.txt # Calculation history storage file.
+
+
+
+Installation Steps
+
+Navigate to the project folder:
+
+cd local-assistant-bot
+
+
+
+Install all required libraries:
+
+pip install -r requirements.txt
+
+
+
+🚀 Quick Usage Guide
 
 Start the bot:
-```bash
+
 python main.py
-Core CommandsCommandDescriptionExample UsagehelpShows the list of all available commands.>> helptimeDisplays the current date and time.>> timecalcCalculates a math expression safely.>> calc 1500 / 3.5 + 50openOpens a file or directory path.>> open "C:\Users\Documents\file.txt"sysinfoDisplays CPU, Memory, and Disk usage.>> sysinfo📝 Note Management (data/notes.txt)Notes are stored with a timestamp and accessed by index for deletion.Add a NoteBash>> note add "Remember to use the Xeon E3 for compiling."
-Output: ✅ Note added to data/notes.txt.View All NotesBash>> note show
-Example Output:📝 Your Notes:
-----------------------------------------
-  1. [2025-10-21 20:03:32] Finish Python project
-  2. [2025-10-21 20:03:50] Remember to use the Xeon E3 for compiling.
-----------------------------------------
-Delete a NoteUse the index from the note show command. To delete note number 1:Bash>> note delete 1
-Example Output:🗑️  Successfully deleted: [2025-10-21 20:03:32] Finish Python project
-📂 File Structurelocal-assistant-bot/
-│
-├── main.py          # Bot entry point and command loop.
-├── commands.py      # Implementation of all terminal commands (including note delete).
-├── utils.py         # Helper functions for system and file operations.
-├── requirements.txt # Project dependencies (psutil).
-└── data/
-    └── notes.txt    # Notes storage file (created automatically).
-💡 Customization & NotesPerformance: Your Workstation HP Z210 with the Xeon E3-1240 and SSD/HDD combination is well-suited for running this local assistant quickly and efficiently.👨‍💻 Author & LicenseAuthor: KhalilLicense: MIT
+
+
+
+Note: Commands are not case-sensitive (you can type help or HELP).
+
+📝 Note Management
+
+Command
+
+Description
+
+Example Usage
+
+note add
+
+Adds a new timestamped note.
+
+note add "Reminder: Finish backend code today"
+
+note show
+
+Displays all notes with their index.
+
+note show
+
+note search
+
+Searches for notes containing a specific keyword.
+
+note search "Python"
+
+note edit
+
+Edits the content of a note using its index number.
+
+note edit 3 "New text for the edit"
+
+note delete
+
+Deletes a note by index, or deletes all notes containing a keyword.
+
+note delete 5 or note delete "old"
+
+💻 System Tools and Monitoring
+
+Command
+
+Description
+
+Example Usage
+
+sysinfo
+
+Displays details of CPU (Xeon E3) consumption, memory, and storage.
+
+sysinfo
+
+clean
+
+Cleans temporary files and caches (Windows/Linux/macOS).
+
+clean
+
+battery
+
+Checks battery status, charge level, and remaining time (for laptops).
+
+battery
+
+network
+
+Displays local IP address and Wi-Fi network name (SSID).
+
+network
+
+remind
+
+Sets a desktop notification to appear after a specified number of seconds.
+
+remind 300 "Coffee break time"
+
+🧮 Calculations and Fun
+
+Command
+
+Description
+
+Example Usage
+
+calc
+
+Safe arithmetic calculator.
+
+calc (500 + 3.14) * 2
+
+calc history
+
+Displays the last 10 calculation entries.
+
+calc history
+
+convert
+
+Converts units (length, weight, temp).
+
+convert length 10 km to mi
+
+random
+
+Generates random numbers or strings (e.g., passwords).
+
+random string 16 or random number 1 100
+
+fun quote
+
+Fetches a random programming quote.
+
+fun quote
+
+fun joke
+
+Displays a short local joke.
+
+fun joke
+
+💡 Notes and Personalization
+
+Performance: The bot is designed to run efficiently on your HP Z210 system, leveraging the power of the Xeon E3-1240 processor and fast storage (SSD/HDD).
+
+Colors: All outputs use the rich library to provide distinct and easy-to-read coloring.
+
+Notifications: The remind feature relies on the plyer library, and may require installing local OS dependencies (like pynotify on Linux) to function fully.
