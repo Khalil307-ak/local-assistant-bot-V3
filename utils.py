@@ -37,17 +37,42 @@ def safe_eval(expr: str):
         raise ValueError(f"Cannot evaluate expression: {e}")
 
 def append_note(file_path: str, text: str):
+    # Ensure the directory exists (e.g., 'data/')
     os.makedirs(os.path.dirname(file_path) or ".", exist_ok=True)
     with open(file_path, "a", encoding="utf-8") as f:
         ts = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         f.write(f"[{ts}] {text}\n")
     return True
 
-def read_notes(file_path: str):
+# --- NEW/UPDATED NOTE FUNCTIONS ---
+
+def read_all_notes(file_path: str):
+    """Reads all notes and returns them as a list of strings."""
     if not os.path.exists(file_path):
         return []
     with open(file_path, "r", encoding="utf-8") as f:
+        # returns list of lines, including newline characters
         return f.readlines()
+
+def delete_note_by_index(file_path: str, index: int):
+    """Deletes a note by its 1-based index and rewrites the file."""
+    notes = read_all_notes(file_path)
+    
+    # Adjust index from 1-based (user input) to 0-based (list index)
+    index_to_delete = index - 1 
+    
+    if 0 <= index_to_delete < len(notes):
+        deleted_note = notes.pop(index_to_delete).strip() # Remove and get the note content
+        
+        # Rewrite the entire file with the remaining notes
+        with open(file_path, "w", encoding="utf-8") as f:
+            f.writelines(notes)
+            
+        return True, deleted_note
+    else:
+        return False, f"Error: Note number {index} not found."
+
+# --- END NOTE FUNCTIONS ---
 
 def get_sysinfo():
     info = {}
