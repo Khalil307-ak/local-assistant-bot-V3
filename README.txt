@@ -20,7 +20,7 @@ This project is a Local Assistant Bot that runs on your computer, providing a se
 
 1. Clone the project:
 
-```bash
+```
 git clone https://github.com/Khalil307-ak/local-assistant-bot.git
 ```
 
