@@ -394,7 +394,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Documentation**: This README
 - **Issues**: GitHub Issues
 - **Discussions**: GitHub Discussions
-- **Email**: support@example.com
+- **Email**:khalil.akram307@gmail.com
 
 ---
 
