@@ -6,43 +6,47 @@ This project is a Local Assistant Bot that runs on your computer, providing a se
 
 ## Features
 
-* Automatic command execution.
-* File management.
-* Expandable: easily add new commands.
-* User-friendly and simple to use.
+- Automatic command execution
+- File management
+- Expandable: easily add new commands
+- User-friendly and simple to use
 
 ## Requirements
 
-* Python 3.x
-* Additional libraries (can be installed via pip)
+- Python 3.x
+- Additional libraries (can be installed via pip)
 
 ## Installation
 
 1. Clone the project:
 
-```bash
 git clone https://github.com/Khalil307-ak/local-assistant-bot.git
-```
+
+css
+نسخ الكود
 
 2. Go to the project folder:
 
-```bash
 cd local-assistant-bot
-```
+
+markdown
+نسخ الكود
 
 3. Install required libraries:
 
-```bash
 pip install -r requirements.txt
-```
+
+shell
+نسخ الكود
 
 ## Usage
 
 To run the bot:
 
-```bash
 python main.py
-```
+
+csharp
+نسخ الكود
 
 ## Contributing
 
