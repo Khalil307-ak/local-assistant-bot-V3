@@ -1,1 +1,4 @@
 psutil>=5.9.0
+rich>=13.0.0      # For colors and better formatting
+requests>=2.28.1  # For external API calls (quotes/jokes)
+plyer>=2.0.0      # For desktop notifications (Reminders)
